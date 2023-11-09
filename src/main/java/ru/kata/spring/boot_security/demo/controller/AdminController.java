@@ -41,12 +41,6 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("/user")
-    public String showUsers(Model model, Principal principal) {
-        model.addAttribute("user", userService.getUserName(principal.getName()));
-        return "user";
-    }
-
     @PostMapping("/new")
     public String create(@ModelAttribute("user") User user, @RequestParam("listRoles") ArrayList<Long> roles) {
         userService.saveNewUser(user, roleService.findRoles(roles));
