@@ -22,4 +22,9 @@ public class RoleDaoImpl implements RoleDao {
         query.setParameter("role", roles);
         return new HashSet<>(query.getResultList());
     }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return entityManager.createQuery("SELECT r FROM Role r", Role.class).getResultList();
+    }
 }
